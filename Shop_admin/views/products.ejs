@@ -1,0 +1,51 @@
+<h1>Товары (<%= items.length %>)</h1>
+<form action="search" method="GET" class="products-search-form">
+    <div class="products-search">
+        <div>
+            <label for="filter-input">Название:</label>
+            <input id="filter-input" type="text" name="title" value="<%= queryParams?.title || "" %>"/>
+        </div>
+
+        <div>
+            <label for="filter-description">Описание:</label>
+            <input id="filter-description" type="text" name="description"
+                   value="<%= queryParams?.description || "" %>"/>
+        </div>
+
+        <div>
+            <label for="filter-price-from">Цена от:</label>
+            <input id="filter-price-from" type="text" name="priceFrom" value="<%= queryParams?.priceFrom || "" %>"/>
+        </div>
+
+        <div>
+            <label for="filter-price-to">Цена до:</label>
+            <input id="filter-price-to" type="text" name="priceTo" value="<%= queryParams?.priceTo || "" %>"/>
+        </div>
+    </div>
+
+    <button type="submit">Найти</button>
+    <a href="<%= `/${process.env.ADMIN_PATH}` %>">Сбросить фильтр</a>
+</form>
+<div class="products-list">
+    <% items.forEach(function(product) { %>
+        <div class="product-item">
+            <div class="image">
+                <img src="<%= product.thumbnail || 'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\'><rect width=\'200\' height=\'150\' fill=\'%23ddd\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23777\' font-size=\'14\'>No Image</text></svg>' %>"
+                     alt="<%= product.title %>">
+            </div>
+            <div class="info">
+                <a class="title" href="<%= `${product.id}` %>">
+                    <%= product.title %>
+                </a>
+                <div>
+                    <span class="label">Количество изображений:</span>
+                    <%= product.images?.length || 0 %>
+                </div>
+                <div>
+                    <span class="label">Цена:</span>
+                    <%= product.price %>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>

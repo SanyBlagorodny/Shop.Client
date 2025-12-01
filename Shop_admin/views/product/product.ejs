@@ -1,0 +1,73 @@
+<h1><%= item.title || 'Новый товар' %></h1>
+<form action="<%= (typeof isNew !== 'undefined' && isNew) ? 'new-product' : `save/${item.id}` %>" method="post" class="product-edit-form">
+    <div class="product-edit-fields">
+        <div class="field">
+            <label for="item-title">Название:</label>
+            <input id="item-title" type="text" name="title" value="<%= item.title %>" />
+        </div>
+
+        <div class="field">
+            <label for="item-description">Описание:</label>
+            <textarea id="item-description" rows="3" name="description"><%= item.description %></textarea>
+        </div>
+
+        <div class="field">
+            <label for="item-price">Цена:</label>
+            <input id="item-price" type="text" name="price" value="<%= item.price %>" />
+        </div>
+
+        <div class="field">
+            <label for="item-new-images">Новые изображения (URL, через перевод строки или запятую):</label>
+            <textarea id="item-new-images" rows="3" name="newImages"></textarea>
+        </div>
+    </div>
+    <% if (item.comments?.length) { %>
+        <h2>Комментарии</h2>
+        <div class="product-edit-comments">
+            <% item.comments.forEach(function(comment) { %>
+                <%- include('product-comments', { comment: comment }) %>
+            <% }); %>
+        </div>
+    <% } %>
+    <% if (item.images?.length) { %>
+        <h2>Изображения</h2>
+        <div class="product-edit-images">
+            <% item.images.forEach(function(image) { %>
+                <%- include('product-images', { image: image }) %>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (typeof similarProducts !== 'undefined' && similarProducts.length) { %>
+        <h2>Похожие товары</h2>
+        <div class="product-edit-similar">
+            <% similarProducts.forEach(function(product) { %>
+                <div class="product-similar-item">
+                    <span><%= product.title %> — <%= product.price %></span>
+                    <label class="remove-mark">
+                        <input type="checkbox" name="similarToRemove" value="<%= product.id %>">
+                        удалить из похожих
+                    </label>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <% if (typeof otherProducts !== 'undefined' && otherProducts.length) { %>
+        <h2>Другие товары для добавления в похожие</h2>
+        <div class="product-edit-similar">
+            <% otherProducts.forEach(function(product) { %>
+                <div class="product-similar-item">
+                    <label>
+                        <input type="checkbox" name="similarToAdd" value="<%= product.id %>">
+                        <span><%= product.title %> — <%= product.price %></span>
+                    </label>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+    <div class="product-edit-footer">
+        <button type="submit">Сохранить изменения</button>
+        <a href="<%= `remove-product/${item.id}` %>">Удалить товар</a>
+    </div>
+</form>

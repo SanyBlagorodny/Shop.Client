@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  background: url("../img/logo.png");
+  background-size: 100px 100px;
+}
+
+.header a {
+  margin-left: 12px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 32px;
+  column-gap: 24px;
+}
+
+.product-item {
+  display: flex;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 16px;
+}
+
+.product-item .image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f9fafb;
+}
+
+.product-item .image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-item .title {
+  display: block;
+  color: inherit;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.product-item .label {
+  font-weight: 600;
+}
+
+.products-search-form {
+  margin-bottom: 32px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 16px 18px;
+}
+
+.products-search {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 10px;
+}
+
+.products-search label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.product-edit-fields {
+  width: 50%;
+}
+
+.product-edit-fields .field {
+  margin-bottom: 20px;
+}
+
+.product-edit-fields .field input,
+.product-edit-fields .field textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+}
+
+.product-edit-fields .field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.product-edit-comments .product-comment {
+  margin-bottom: 20px;
+}
+
+.product-comment {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.product-comment .remove-mark {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.product-edit-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  padding: 16px 18px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.product-image .image-wrapper {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.product-image .image-wrapper img {
+  max-width: 100%;
+}
+
+.product-image .control {
+  text-align: center;
+}
+
+.product-image .remove-mark {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.product-edit-footer {
+  margin-top: 60px;
+}

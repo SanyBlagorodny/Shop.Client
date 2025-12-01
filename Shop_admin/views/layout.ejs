@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>SHOP PROJECT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" />
+    <link rel="stylesheet" href="/<%= process.env.ADMIN_PATH %>/css/styles.css" />
+</head>
+
+<body>
+<header class="header">
+    <div class="logo"></div>
+    <div>
+        <% if (typeof hideAddProductLink === 'undefined' || !hideAddProductLink) { %>
+            <a href="<%= `/${process.env.ADMIN_PATH}/new-product` %>">Добавить товар</a>
+        <% } %>
+        <a href= "<%= `/${process.env.ADMIN_PATH}/auth/logout` %>">Выйти</a>
+    </div>
+</header>
+<div class="container">
+    <%- body %>
+</div>
+</body>
+
+</html>
